@@ -1,0 +1,8 @@
+FROM node:14.17.5
+RUN apt install wget unzip -y
+RUN wget https://releases.hashicorp.com/envconsul/0.13.2/envconsul_0.13.2_linux_386.zip
+RUN unzip envconsul_0.13.2_linux_386.zip && mv envconsul /tmp
+RUN chmod 777 -R /tmp
+
+
+
