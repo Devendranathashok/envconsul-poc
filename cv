@@ -1,0 +1,9 @@
+      "template" = {
+      "contents" = "{{ range secrets \"ocp/${namespace}/${env}/keys/\" }}\n{{ $fileAddress :=  (printf \"/opt/commonvolume/%s\" .) }}\n{{ with secret (printf \"ocp/${namespace}/${env}/keys/%s\" . ) }}\n{{ range $file, $key := .Data }}\n{{ if $key }}\n{{ base64Decode  $key | writeToFile  $fileAddress  \"\" \"\" \"0644\" }}\n{{ end }}{{ end }}{{ end }}{{ end }}\n"
+    
+      "destination" = "/opt/commonvolume/keys"
+    
+      "left_delimiter" = "{{"
+    
+      "right_delimiter" = "}}"
+       }
