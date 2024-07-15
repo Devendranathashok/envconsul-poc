@@ -17,6 +17,5 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: poojashankarappa/nodejs:1.0.0
+          image: devendranathashok/nodejs:2.0.2
       serviceAccountName: vault-auth
-
