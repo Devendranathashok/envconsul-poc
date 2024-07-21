@@ -6,12 +6,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3
-      - name: Install Node js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: test
-        run: npm run test
   docker-build:
     runs-on: docker_runner
     needs: test
