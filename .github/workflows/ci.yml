@@ -10,8 +10,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: install dep
-        run: npm ci
       - name: test
         run: npm run test
   docker-build:
