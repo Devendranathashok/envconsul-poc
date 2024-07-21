@@ -4,4 +4,5 @@ COPY package.json ./
 RUN npm install
 COPY . .
 EXPOSE 3005
-ENTRYPOINT [ "/tmp/envconsul", "--once", "-config=/vault/secrets/envconsul-config.hcl", "node", "app.js"]
+ENTRYPOINT ["node", "app.js"]
+//ENTRYPOINT [ "/tmp/envconsul", "--once", "-config=/vault/secrets/envconsul-config.hcl", "node", "app.js"]
