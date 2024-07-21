@@ -1,0 +1,29 @@
+name: sample node js workflow
+on: push
+jobs: 
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: Install Node js
+        uses: actions/setup-nodejs@v3
+        with:
+          node-version: 18
+      - name: install dep
+        run: npm ci
+      - name: test
+        run: npm run test
+  docker-build:
+    runs-on: docker_runner
+    needs: test
+    steps:
+      - name: Build & push Docker image
+        uses: devendranathashok/actions@v1
+        with:
+          dockerfile: Dockerfile
+          DOCKER_USER : ${{ secrets.DOCKERUSER }}
+          DOCKER_PWD : ${{ secrets.DOCKERPASSWORD }}
+        
+        
+        
